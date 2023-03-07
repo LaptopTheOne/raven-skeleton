@@ -1,0 +1,23 @@
+{
+  "name": "raven-skeleton",
+  "version": "1.0.0",
+  "description": "11ty based skeleton which will import MF components TODO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaptopTheOne/raven-skeleton.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LaptopTheOne/raven-skeleton/issues"
+  },
+  "homepage": "https://github.com/LaptopTheOne/raven-skeleton#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
