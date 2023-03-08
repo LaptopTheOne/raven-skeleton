@@ -1,0 +1,16 @@
+body {
+  background-color: #121E2A;
+  color:#FEFEFE;
+  font-family: 'Roboto', sans-serif;
+}
+
+.home-text-container {
+  font-size: 56px;
+  padding-left: 140px;
+  padding-right: 140px;
+  text-align: center;
+}
+
+.text-item {
+  padding-top: 60px;
+}

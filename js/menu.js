@@ -6,6 +6,7 @@ menuTemplate.innerHTML = `
     color: #e0e1e2;
     display:flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   #menu-button {
@@ -22,7 +23,7 @@ menuTemplate.innerHTML = `
   .menu-items-container {
     overflow: hidden;
     display:flex;
-    width: 25%;
+    width: 40%;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s linear;
@@ -60,7 +61,8 @@ menuTemplate.innerHTML = `
     </button>
     <div id="menu-items-container" class="menu-items-container"></div>
     <div id="menu-title"></div>
-    <div></div>
+    <div style="width:40%"></div>
+    <div style="width:40px"></div>
   </div>
 `
 
