@@ -2,6 +2,7 @@ module.exports = function(eleventyConfig) {
   // Output directory: _site
 
   eleventyConfig.addPassthroughCopy("js/*.js")
+  eleventyConfig.addPassthroughCopy("assets/*.svg")
 
   // Copy `img/` to `_site/img`
   // eleventyConfig.addPassthroughCopy("img");

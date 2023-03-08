@@ -3,14 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-color: #121E2A; color:#FEFEFE">
+<body style="background-color: #121E2A; color:#FEFEFE; font-family: 'Roboto', sans-serif;">
   <weather-card longitude='85.8245' latitude='20.296'></weather-card>
   <script src='js/weather-card.js'></script>
 
   <script src='js/menu.js'></script>
-  <menu-bar menuItems="item1, item2"></menu-bar>
+  <menu-bar menuItemsNames="home,saved-posts,explore" menuItemsLinks="/,/,/" title="Tidder"></menu-bar>
 </body>
 
 </html>
