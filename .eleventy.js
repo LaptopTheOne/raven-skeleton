@@ -2,6 +2,7 @@ module.exports = function(eleventyConfig) {
   // Output directory: _site
 
   eleventyConfig.addPassthroughCopy("js/*.js")
+  eleventyConfig.addPassthroughCopy("js/history/*.js")
   eleventyConfig.addPassthroughCopy("assets/*.svg")
   eleventyConfig.addPassthroughCopy("main.css")
 
