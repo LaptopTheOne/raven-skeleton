@@ -12,10 +12,11 @@
 <body>
   <!-- <weather-card longitude='85.8245' latitude='20.296'></weather-card>
   <script src='js/weather-card.js'></script> -->
-
+  <script src='js/helpers.js'></script>
   <script src='js/menu.js'></script>
   <menu-bar menuItemsNames="home,saved-posts,explore" menuItemsLinks="/,/,/" title="Tidder"></menu-bar>
 
+  <button onclick="Helpers.generateHistoryScopeUrl()">History</button>
   <div class="home-text-container">
     <div class="text-item">Welcome to <span style="color:#FAC762">Tidder</span> - Reddit portal</div>
     <div class="text-item">Sign in with Reddit account and start:</div>
