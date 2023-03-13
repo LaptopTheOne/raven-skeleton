@@ -32,6 +32,16 @@ class Helpers {
     }
   }
 
+  static getSavedItems() {
+    if (getCookie(TOKEN_HISTORY_KEY)) {
+      fetch(`http://localhost:3001/api/history/get-saved-items?token=${getCookie(TOKEN_HISTORY_KEY)}`).then(data => {
+        return data.json()
+      }).then(res => {
+        console.log(res)
+      })
+    }
+  }
+
   static testApiRequest() {
     fetch('https://api.github.com/repos/11ty/eleventy').then(data => {
       return data.json()
