@@ -61,8 +61,11 @@ menuTemplate.innerHTML = `
     </button>
     <div id="menu-items-container" class="menu-items-container"></div>
     <div id="menu-title"></div>
-    <div style="width:40%"></div>
-    <div style="width:40px"></div>
+    <div id="menu-user-name" style="width:40%; text-align: end">
+    </div>
+    <div style="width:40px">
+      <img id="menu-avatar" style="height: 36px;">
+    </div>
   </div>
 `
 
@@ -74,6 +77,11 @@ class Menu extends HTMLElement {
 
     this._menuBar = this._shadowRoot.querySelector('#menu-items-container');
     this._title = this._shadowRoot.querySelector('#menu-title');
+    this._username = this._shadowRoot.querySelector('#menu-user-name');
+    this._avatar = this._shadowRoot.querySelector('#menu-avatar');
+
+    this._usernameText = 'Not signed in';
+    this._avatarSrc = './assets/account.svg';
   }
 
   connectedCallback() {
@@ -93,6 +101,8 @@ class Menu extends HTMLElement {
     })
 
     this._title.textContent = this.title;
+    this._username.textContent = this._usernameText;
+    this._avatar.setAttribute('src', this._avatarSrc);
   }
 
   get menuItemsNames() {
@@ -105,6 +115,13 @@ class Menu extends HTMLElement {
 
   get title() {
     return this.getAttribute('title');
+  }
+
+  setUserDetails(username, avatarSrc) {
+    this._usernameText = username;
+    this._avatarSrc = avatarSrc;
+    this._username.textContent = this._usernameText;
+    this._avatar.setAttribute('src', this._avatarSrc);
   }
 }
 
