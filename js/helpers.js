@@ -37,6 +37,7 @@ class Helpers {
       fetch(`http://localhost:3001/api/history/get-saved-items?token=${getCookie(TOKEN_HISTORY_KEY)}&username=${getCookie(USERNAME_KEY)}`).then(data => {
         return data.json()
       }).then(res => {
+        document.querySelector('#raven-history-saved-items').savedItems = res;
         console.log(res)
       })
     }
