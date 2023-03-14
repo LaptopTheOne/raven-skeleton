@@ -33,8 +33,8 @@ class Helpers {
   }
 
   static getSavedItems() {
-    if (getCookie(TOKEN_HISTORY_KEY)) {
-      fetch(`http://localhost:3001/api/history/get-saved-items?token=${getCookie(TOKEN_HISTORY_KEY)}`).then(data => {
+    if (getCookie(TOKEN_HISTORY_KEY) && getCookie(USERNAME_KEY)) {
+      fetch(`http://localhost:3001/api/history/get-saved-items?token=${getCookie(TOKEN_HISTORY_KEY)}&username=${getCookie(USERNAME_KEY)}`).then(data => {
         return data.json()
       }).then(res => {
         console.log(res)
