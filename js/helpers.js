@@ -48,6 +48,25 @@ class Helpers {
       return data.json()
     }).then(res => console.log(res))
   }
+
+  static testHistoryUI() {
+    document.querySelector('#raven-history-saved-items').savedItems = [{
+      "subreddit": "rubyonrails",
+      "title": "Ryan Bates (Railscasts) has surfaced!",
+      "link_flair_text": null,
+      "url": "https://www.reddit.com/r/rubyonrails/comments/11jkghr/ryan_bates_railscasts_has_surfaced/"
+    }, {
+      "subreddit": "redditdev",
+      "title": "How to do a reddit search using API ? Not a subreddit search",
+      "link_flair_text": "Reddit API",
+      "url": "https://www.reddit.com/r/redditdev/comments/z10wzz/how_to_do_a_reddit_search_using_api_not_a/"
+    }, {
+      "subreddit": "CharruaDevs",
+      "title": "Layoffs, recesión? Despidos masivos en ENDAVA? Escucharon algo?",
+      "link_flair_text": "Opinión/Debate",
+      "url": "https://www.reddit.com/r/CharruaDevs/comments/10ytwbc/layoffs_recesión_despidos_masivos_en_endava/"
+    }];
+  }
 }
 
 function getCookie(name) {
