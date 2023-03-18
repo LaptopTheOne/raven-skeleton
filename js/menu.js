@@ -57,7 +57,7 @@ menuTemplate.innerHTML = `
   </style>
   <div id="menu-bar">
     <button id="menu-button">
-      <img src="./assets/menu.svg" />
+      <img src="/assets/menu.svg" />
     </button>
     <div id="menu-items-container" class="menu-items-container"></div>
     <div id="menu-title"></div>
@@ -81,7 +81,7 @@ class Menu extends HTMLElement {
     this._avatar = this._shadowRoot.querySelector('#menu-avatar');
 
     this._usernameText = 'Not signed in';
-    this._avatarSrc = './assets/account.svg';
+    this._avatarSrc = '/assets/account.svg';
   }
 
   connectedCallback() {
@@ -97,7 +97,7 @@ class Menu extends HTMLElement {
       const menuItem = this._menuBar.appendChild(document.createElement('a'))
       menuItem.href = `${menuItemsLinks[index]}`
       menuItem.className = 'menu-item';
-      menuItem.innerHTML = `<img src="./assets/${item}.svg" />`;
+      menuItem.innerHTML = `<img src="/assets/${item}.svg" />`;
     })
 
     this._title.textContent = this.title;

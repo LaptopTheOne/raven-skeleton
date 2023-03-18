@@ -4,7 +4,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("js/*.js")
   eleventyConfig.addPassthroughCopy("js/history/*.js")
   eleventyConfig.addPassthroughCopy("assets/*.svg")
-  eleventyConfig.addPassthroughCopy("main.css")
+  eleventyConfig.addPassthroughCopy("assets/*.css")
 
   // Copy `img/` to `_site/img`
   // eleventyConfig.addPassthroughCopy("img");
