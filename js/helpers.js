@@ -1,6 +1,7 @@
-const TOKEN_ID_KEY = 'identity-access-token'
-const TOKEN_HISTORY_KEY = 'history-access-token'
-const USERNAME_KEY = 'username'
+const TOKEN_ID_KEY = 'identity-access-token';
+const TOKEN_HISTORY_KEY = 'history-access-token';
+const USERNAME_KEY = 'username';
+const AVATAR_KEY = 'avatar-src';
 
 class Helpers {
   static generateIdentityScopeUrl() {
@@ -27,6 +28,7 @@ class Helpers {
         let username = res['name'];
         let avatarSrc = res['snoovatar_img'];
         document.cookie = `${USERNAME_KEY}=${username}; max-age=604800`;
+        document.cookie = `${AVATAR_KEY}=${avatarSrc}; max-age=604800`;
         document.querySelector('menu-bar').setUserDetails(username, avatarSrc);
       })
     }
@@ -90,5 +92,9 @@ window.onload = function () {
     }
     // clear query params
     window.location.replace(document.location.origin);
+  }
+
+  if (getCookie(USERNAME_KEY) && getCookie(AVATAR_KEY)) {
+    document.querySelector('menu-bar').setUserDetails(getCookie(USERNAME_KEY), getCookie(AVATAR_KEY));
   }
 };
