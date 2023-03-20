@@ -1,6 +1,7 @@
 {% extends "base.njk" %}
 {% block main %}
-  <script src="/js/history/history-table.js" charset="utf-8"></script>
-  <h2>{{ pageTitle }} </h2>
-  <raven-history-table id="raven-history-saved-items"></raven-history-table>
+  {# <h2>{{ pageTitle }} </h2> #}
+  <div style="max-height: 90%; margin: auto; margin-left: 0px; margin-top: 0px;">
+    <raven-history-table id="raven-history-saved-items"></raven-history-table>
+  </div>
 {% endblock %}

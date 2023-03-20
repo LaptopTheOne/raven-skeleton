@@ -3,6 +3,8 @@ const TOKEN_HISTORY_KEY = 'history-access-token';
 const USERNAME_KEY = 'username';
 const AVATAR_KEY = 'avatar-src';
 
+import { testData } from './test-data.js';
+
 class Helpers {
   static generateIdentityScopeUrl() {
     fetch('http://localhost:3000/api/oauth/authorization_token?scope=identity').then(data => {
@@ -50,19 +52,7 @@ class Helpers {
   }
 
   static testHistoryUI() {
-    document.querySelector('#raven-history-saved-items').savedItems = {
-      "rubyonrails": [{
-        "subreddit": "rubyonrails",
-        "title": "Ryan Bates (Railscasts) has surfaced!",
-        "link_flair_text": null,
-        "url": "https://www.reddit.com/r/rubyonrails/comments/11jkghr/ryan_bates_railscasts_has_surfaced/"
-      }, {
-        "subreddit": "rubyonrails",
-        "title": "Any of you Ruby on Rails developers looking for a job?",
-        "link_flair_text": null,
-        "url": "https://www.reddit.com/r/rubyonrails/comments/ykj73p/any_of_you_ruby_on_rails_developers_looking_for_a/"
-      }]
-    }
+    document.querySelector('#raven-history-saved-items').savedItems = testData
   }
 }
 
@@ -79,6 +69,9 @@ function checkQueryParams() {
 
 function setUsernameAndAvatar(username, avatarSrc) {
   document.querySelector('menu-bar').setUserDetails(username, avatarSrc);
+}
+
+function showWelcomeMessage(username, avatar) {
   document.getElementsByTagName('body')[0].removeChild(document.getElementById('home-text'))
   const welcomeMessage = document.createElement("div");
   welcomeMessage.className = 'home-text-container'
@@ -107,9 +100,15 @@ window.onload = function () {
         window.location.replace(document.location.origin);
       }
     }
+  } else {
+    if (getCookie(USERNAME_KEY) && getCookie(AVATAR_KEY)) {
+      setUsernameAndAvatar(getCookie(USERNAME_KEY), getCookie(AVATAR_KEY));
+    }
+    if (window.location.pathname == '/history/') {
+      console.log('111', testData)
+      // Helpers.getSavedItems();
+    }
   }
-
-  if (getCookie(USERNAME_KEY) && getCookie(AVATAR_KEY)) {
-    setUsernameAndAvatar(getCookie(USERNAME_KEY), getCookie(AVATAR_KEY));
-  }
+  // Adding event listeners to the helper buttons
+  document.getElementById('testUI').addEventListener("click", Helpers.testHistoryUI);
 };
