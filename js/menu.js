@@ -7,6 +7,7 @@ menuTemplate.innerHTML = `
     display:flex;
     align-items: center;
     justify-content: space-between;
+    padding: 16px;
   }
 
   #menu-button {

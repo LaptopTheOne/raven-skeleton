@@ -29,7 +29,9 @@ class Helpers {
         let avatarSrc = res['snoovatar_img'];
         document.cookie = `${USERNAME_KEY}=${username}; max-age=604800`;
         document.cookie = `${AVATAR_KEY}=${avatarSrc}; max-age=604800`;
-        document.querySelector('menu-bar').setUserDetails(username, avatarSrc);
+        setUsernameAndAvatar(username, avatarSrc);
+        // clear query params
+        window.location.replace(document.location.origin);
       })
     }
   }
@@ -75,6 +77,16 @@ function checkQueryParams() {
   return params.has(TOKEN_ID_KEY) || params.has(TOKEN_HISTORY_KEY)
 }
 
+function setUsernameAndAvatar(username, avatarSrc) {
+  document.querySelector('menu-bar').setUserDetails(username, avatarSrc);
+  document.getElementsByTagName('body')[0].removeChild(document.getElementById('home-text'))
+  const welcomeMessage = document.createElement("div");
+  welcomeMessage.className = 'home-text-container'
+  const textMessage = document.createTextNode(`Welcome ${getCookie(USERNAME_KEY)}`);
+  welcomeMessage.appendChild(textMessage);
+  document.getElementsByTagName('body')[0].appendChild(welcomeMessage);
+}
+
 window.onload = function () {
   let params = (new URL(document.location)).searchParams;
   if (checkQueryParams()) {
@@ -82,19 +94,22 @@ window.onload = function () {
       let token = params.get(TOKEN_ID_KEY);
       if (token) {
         document.cookie = `${TOKEN_ID_KEY}=${token}; max-age=604800`;
+        if (!getCookie(USERNAME_KEY) || !getCookie(AVATAR_KEY)) {
+          Helpers.getAboutMe();
+        }
       }
     }
     if (!getCookie(TOKEN_HISTORY_KEY)) {
       let token = params.get(TOKEN_HISTORY_KEY);
       if (token) {
         document.cookie = `${TOKEN_HISTORY_KEY}=${token}; max-age=604800`;
+        // clear query params
+        window.location.replace(document.location.origin);
       }
     }
-    // clear query params
-    window.location.replace(document.location.origin);
   }
 
   if (getCookie(USERNAME_KEY) && getCookie(AVATAR_KEY)) {
-    document.querySelector('menu-bar').setUserDetails(getCookie(USERNAME_KEY), getCookie(AVATAR_KEY));
+    setUsernameAndAvatar(getCookie(USERNAME_KEY), getCookie(AVATAR_KEY));
   }
 };
