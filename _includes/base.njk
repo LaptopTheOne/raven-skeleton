@@ -16,17 +16,10 @@
 <body>
   <div class="menu-container">
     <menu-bar menuItemsNames="home,saved-posts,explore" menuItemsLinks="/,/history,/explore" title="Tidder"></menu-bar>
-
-    {# <button onclick="Helpers.generateIdentityScopeUrl()">Allow Identity</button> #}
-    {# <button onclick="Helpers.getAboutMe()">Login</button> #}
-    <button onclick="Helpers.generateHistoryScopeUrl()">Allow History</button>
-    {# <button onclick="Helpers.getSavedItems()">Load Saved Items</button> #}
-    <button id="testUI">TEST HISTORY UI LIB</button>
-    {# <button id="testUI" onclick="Helpers.testHistoryUI()">TEST HISTORY UI LIB</button> #}
   </div>
     {% block main %}
     {{ content | safe }}
-    <div id="home-text" class="home-text-container">
+    <div id="home-text" class="home-text-container" style="display: none;">
       <div class="text-item">{{ header1_p1 }}<span style="color:#FAC762">{{ title }}</span>{{ header1_p2 }}</div>
       <div class="text-item"> {{ header2 }} </div>
       <button class="login-button" onclick="Helpers.generateIdentityScopeUrl()"><img id="login-img" src="/assets/login.svg"></button>

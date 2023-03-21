@@ -72,13 +72,16 @@ function setUsernameAndAvatar(username, avatarSrc) {
   document.querySelector('menu-bar').setUserDetails(username, avatarSrc);
 }
 
-function showWelcomeMessage(username, avatar) {
-  document.getElementsByTagName('body')[0].removeChild(document.getElementById('home-text'))
-  const welcomeMessage = document.createElement("div");
-  welcomeMessage.className = 'home-text-container'
-  const textMessage = document.createTextNode(`Welcome ${getCookie(USERNAME_KEY)}`);
-  welcomeMessage.appendChild(textMessage);
-  document.getElementsByTagName('body')[0].appendChild(welcomeMessage);
+function showWelcomeMessage() {
+  if (getCookie(TOKEN_ID_KEY) && getCookie(USERNAME_KEY) && getCookie(AVATAR_KEY)) {
+    document.getElementsByTagName('body')[0].removeChild(document.getElementById('home-text'))
+    const welcomeMessage = document.createElement("div");
+    welcomeMessage.className = 'home-text-container'
+    const textMessage = document.createTextNode(`Welcome ${getCookie(USERNAME_KEY)}`);
+    welcomeMessage.appendChild(textMessage);
+    document.getElementsByTagName('body')[0].appendChild(welcomeMessage);
+  }
+  document.getElementsByClassName('home-text-container').style = "display: flex"
 }
 
 window.onload = function () {
@@ -111,8 +114,9 @@ window.onload = function () {
       } else {
         Helpers.getSavedItems();
       }
+    } else {
+      // root
+      showWelcomeMessage();
     }
   }
-  // Adding event listeners to the helper buttons
-  document.getElementById('testUI').addEventListener("click", Helpers.testHistoryUI);
 };
