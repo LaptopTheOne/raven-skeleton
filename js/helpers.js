@@ -2,6 +2,7 @@ const TOKEN_ID_KEY = 'identity-access-token';
 const TOKEN_HISTORY_KEY = 'history-access-token';
 const USERNAME_KEY = 'username';
 const AVATAR_KEY = 'avatar-src';
+const MAX_COOKIE_AGE = 604800
 
 import { testData } from './test-data.js';
 
@@ -29,8 +30,8 @@ class Helpers {
       }).then(res => {
         let username = res['name'];
         let avatarSrc = res['snoovatar_img'];
-        document.cookie = `${USERNAME_KEY}=${username}; max-age=604800`;
-        document.cookie = `${AVATAR_KEY}=${avatarSrc}; max-age=604800`;
+        document.cookie = `${USERNAME_KEY}=${username}; max-age=${MAX_COOKIE_AGE}`;
+        document.cookie = `${AVATAR_KEY}=${avatarSrc}; max-age=${MAX_COOKIE_AGE}`;
         setUsernameAndAvatar(username, avatarSrc);
         // clear query params
         window.location.replace(document.location.origin);
@@ -86,7 +87,7 @@ window.onload = function () {
     if (!getCookie(TOKEN_ID_KEY)) {
       let token = params.get(TOKEN_ID_KEY);
       if (token) {
-        document.cookie = `${TOKEN_ID_KEY}=${token}; max-age=604800`;
+        document.cookie = `${TOKEN_ID_KEY}=${token}; max-age=${MAX_COOKIE_AGE}`;
         if (!getCookie(USERNAME_KEY) || !getCookie(AVATAR_KEY)) {
           Helpers.getAboutMe();
         }
@@ -95,7 +96,7 @@ window.onload = function () {
     if (!getCookie(TOKEN_HISTORY_KEY)) {
       let token = params.get(TOKEN_HISTORY_KEY);
       if (token) {
-        document.cookie = `${TOKEN_HISTORY_KEY}=${token}; max-age=604800`;
+        document.cookie = `${TOKEN_HISTORY_KEY}=${token}; max-age=${MAX_COOKIE_AGE}`;
         // clear query params
         window.location.replace(document.location.origin);
       }
@@ -105,8 +106,11 @@ window.onload = function () {
       setUsernameAndAvatar(getCookie(USERNAME_KEY), getCookie(AVATAR_KEY));
     }
     if (window.location.pathname == '/history/') {
-      console.log('111', testData)
-      // Helpers.getSavedItems();
+      if (!getCookie(TOKEN_HISTORY_KEY)) {
+        Helpers.generateHistoryScopeUrl();
+      } else {
+        Helpers.getSavedItems();
+      }
     }
   }
   // Adding event listeners to the helper buttons
