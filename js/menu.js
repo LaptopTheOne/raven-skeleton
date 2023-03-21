@@ -36,14 +36,14 @@ menuTemplate.innerHTML = `
   }
 
   .menu-item {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
     transition: padding 0.2s ease-in;
   }
 
   .menu-item:hover {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
     -webkit-box-shadow: inset 0px -5px 0px -4px rgba(255,0,0,1);
     -moz-box-shadow: inset 0px -5px 0px -4px rgba(255,0,0,1);
     box-shadow: inset 0px -5px 0px -4px rgba(255,0,0,1);
