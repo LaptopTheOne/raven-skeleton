@@ -1,3 +1,5 @@
+import { RAVEN_IDENTITY_API } from './env.js'
+
 const TOKEN_ID_KEY = 'identity-access-token';
 const TOKEN_HISTORY_KEY = 'history-access-token';
 const USERNAME_KEY = 'username';
@@ -8,7 +10,7 @@ import { testData } from './test-data.js';
 
 class Helpers {
   static generateIdentityScopeUrl() {
-    fetch('http://localhost:3000/api/oauth/authorization_token?scope=identity').then(data => {
+    fetch(`${RAVEN_IDENTITY_API}/api/oauth/authorization_token?scope=identity`).then(data => {
       return data.json()
     }).then(res => {
       window.location.replace(res);
@@ -16,7 +18,7 @@ class Helpers {
   }
 
   static generateHistoryScopeUrl() {
-    fetch('http://localhost:3000/api/oauth/authorization_token?scope=history').then(data => {
+    fetch(`${RAVEN_IDENTITY_API}/api/oauth/authorization_token?scope=history`).then(data => {
       return data.json()
     }).then(res => {
       window.location.replace(res);
@@ -25,7 +27,7 @@ class Helpers {
 
   static getAboutMe() {
     if (getCookie(TOKEN_ID_KEY)) {
-      fetch(`http://localhost:3000/api/identity/me?token=${getCookie(TOKEN_ID_KEY)}`).then(data => {
+      fetch(`${RAVEN_IDENTITY_API}/api/identity/me?token=${getCookie(TOKEN_ID_KEY)}`).then(data => {
         return data.json()
       }).then(res => {
         let username = res['name'];
@@ -81,7 +83,9 @@ function showWelcomeMessage() {
     welcomeMessage.appendChild(textMessage);
     document.getElementsByTagName('body')[0].appendChild(welcomeMessage);
   }
-  document.getElementsByClassName('home-text-container').style = "display: flex"
+  // document.getElementsByClassName('home-text-container').style = "display: flex;"
+  document.querySelector('#home-text').style = "display: flex;"
+  document.querySelector('#login-btn').addEventListener("click", Helpers.generateIdentityScopeUrl());
 }
 
 window.onload = function () {

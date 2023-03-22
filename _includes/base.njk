@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/main.css">
+  <script src="/js/env.js" type="module"></script>
   <script src='/js/helpers.js' type="module"></script>
   <script src='/js/menu.js'></script>
   <script src="/js/history/history-table.js" charset="utf-8"></script>
@@ -22,7 +23,7 @@
     <div id="home-text" class="home-text-container" style="display: none;">
       <div class="text-item">{{ header1_p1 }}<span style="color:#FAC762">{{ title }}</span>{{ header1_p2 }}</div>
       <div class="text-item"> {{ header2 }} </div>
-      <button class="login-button" onclick="Helpers.generateIdentityScopeUrl()"><img id="login-img" src="/assets/login.svg"></button>
+      <button id="login-btn" class="login-button"><img id="login-img" src="/assets/login.svg"></button>
     </div>
     {% endblock %}
 </body>

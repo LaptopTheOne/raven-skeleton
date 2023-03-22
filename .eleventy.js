@@ -1,4 +1,4 @@
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
   // Output directory: _site
 
   eleventyConfig.addPassthroughCopy("js/*.js")

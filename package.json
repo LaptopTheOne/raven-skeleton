@@ -4,6 +4,9 @@
   "description": "11ty based skeleton which will import MF components TODO",
   "main": "index.js",
   "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build-production": "echo -e \"export const RAVEN_IDENTITY_API=\"https://ancient-fog-7097.fly.dev\"; > ./js/env.js && npx @11ty/eleventy",
+    "build": "echo \"export const RAVEN_IDENTITY_API='http://localhost:3000';\" > ./js/env.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
