@@ -4,3 +4,4 @@
 _site
 node_modules
 js/env.js
+.env
