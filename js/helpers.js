@@ -79,13 +79,14 @@ function showWelcomeMessage() {
     document.getElementsByTagName('body')[0].removeChild(document.getElementById('home-text'))
     const welcomeMessage = document.createElement("div");
     welcomeMessage.className = 'home-text-container'
+    welcomeMessage.id = 'home-text'
     const textMessage = document.createTextNode(`Welcome ${getCookie(USERNAME_KEY)}`);
     welcomeMessage.appendChild(textMessage);
     document.getElementsByTagName('body')[0].appendChild(welcomeMessage);
+  } else {
+    document.querySelector('#login-btn').addEventListener("click", (event) => { Helpers.generateIdentityScopeUrl() });
   }
-  // document.getElementsByClassName('home-text-container').style = "display: flex;"
   document.querySelector('#home-text').style = "display: flex;"
-  document.querySelector('#login-btn').addEventListener("click", Helpers.generateIdentityScopeUrl());
 }
 
 window.onload = function () {
